@@ -1,0 +1,14 @@
+{
+  "profiles": {
+    "QuoteConsumer": {
+      "commandName": "Project",
+      "environmentVariables": {
+        "PostURL": "https://localhost:5001/quote",
+        "HookURL": "ws://localhost:8080/quotes"
+      }
+    },
+    "Docker": {
+      "commandName": "Docker"
+    }
+  }
+}

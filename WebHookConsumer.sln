@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.29519.181
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebHookConsumer", "WebHookConsumer\WebHookConsumer.csproj", "{9240B107-EDA3-4ACF-BB39-F95DF0790088}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QuoteConsumer", "QuoteConsumer\QuoteConsumer.csproj", "{3129D454-DB89-4A6A-AD64-0583A9F7CC94}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -11,10 +11,10 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{9240B107-EDA3-4ACF-BB39-F95DF0790088}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{9240B107-EDA3-4ACF-BB39-F95DF0790088}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{9240B107-EDA3-4ACF-BB39-F95DF0790088}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{9240B107-EDA3-4ACF-BB39-F95DF0790088}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3129D454-DB89-4A6A-AD64-0583A9F7CC94}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3129D454-DB89-4A6A-AD64-0583A9F7CC94}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3129D454-DB89-4A6A-AD64-0583A9F7CC94}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3129D454-DB89-4A6A-AD64-0583A9F7CC94}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

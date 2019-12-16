@@ -4,21 +4,26 @@ using System.Net.WebSockets;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
-using System.Web.Script.Serialization;
 
-namespace WebHookConsumer
+namespace QuoteConsumer
 {
     class Program
     {
-        private static UTF8Encoding encoding = new UTF8Encoding();
+        private static readonly UTF8Encoding encoding = new UTF8Encoding();
 
         public static List<Quote> QuotesList { get; set; }
 
         static void Main(string[] args)
         {
-            QuotesList = new List<Quote>();
-            Connect("ws://localhost:8080/quotes").Wait();
-            Console.ReadKey();
+            try
+            {
+                QuotesList = new List<Quote>();
+                Connect(Environment.GetEnvironmentVariable("HookURL")).Wait();
+            }
+            catch (Exception ex)
+            {
+                
+            }
         }
 
         public static async Task Connect(string uri)
@@ -34,11 +39,15 @@ namespace WebHookConsumer
             }
             catch (Exception ex)
             {
+                Console.WriteLine("WebSocket error. " + ex.Message);
             }
             finally
             {
                 if (webSocket != null)
+                {
                     webSocket.Dispose();
+                }
+
                 Console.WriteLine();
                 Console.WriteLine("WebSocket closed.");
             }
@@ -49,17 +58,16 @@ namespace WebHookConsumer
             byte[] buffer = new byte[1024];
             while (webSocket.State == WebSocketState.Open)
             {
-                var result = await webSocket.ReceiveAsync(new ArraySegment<byte>(buffer), CancellationToken.None);
+                WebSocketReceiveResult result = await webSocket.ReceiveAsync(new ArraySegment<byte>(buffer), CancellationToken.None);
                 if (result.MessageType == WebSocketMessageType.Close)
                 {
                     await webSocket.CloseAsync(WebSocketCloseStatus.NormalClosure, string.Empty, CancellationToken.None);
                 }
                 else
                 {
-                    var message = Encoding.UTF8.GetString(buffer).TrimEnd('\0');
+                    string message = Encoding.UTF8.GetString(buffer).TrimEnd('\0');
                     Quote quote = new Quote(message);
-                    QuotesList.Add(quote);
-                    Console.WriteLine(new JavaScriptSerializer().Serialize(quote));
+                    ApiService.Post(quote);
                 }
             }
         }
