@@ -1,13 +1,10 @@
-# ToroChallengeApi
+# WebHookConsumer
+WebHookConsumer
 - Clone this repository
-- Open project with visual code
-- Restore project
-- Set conenction string from sqlserver
+- Open project with visual studio
+- Restore Project
 - Configure these two enviroment variables
-    - MainConnection: "your connection string"
-- To receive hooks with quotes you must run WebHookConsumer in path https://github.com/AndreMendesMarcondes/WebHookConsumer
-
-# Requirements
-- SDk DotNet Core 3.1
-- SQLServer
-- WebHookConsumer
+    - HookURL: ws://localhost:8080/quotes
+    - PostURL: https://localhost:5001/quote (or the url you want hook post data)
+- With docker installed run docker run -p 8080:8080 toroinvestimentos/quotesmock
+- run app
